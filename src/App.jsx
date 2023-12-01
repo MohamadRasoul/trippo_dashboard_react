@@ -1,5 +1,4 @@
-import Sidebar from "./containers/global/Sidebar";
-import Topbar from "./containers/global/Topbar";
+
 
 import { ColorModeContext, useMode } from "./config/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -12,13 +11,7 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="app">
-          <Sidebar />
-          <main className="content">
-            <Topbar />
-            <AppRoutes />
-          </main>
-        </div>
+        <AppRoutes/>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
