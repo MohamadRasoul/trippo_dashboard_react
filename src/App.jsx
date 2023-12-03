@@ -1,8 +1,7 @@
-
-
-import { ColorModeContext, useMode } from "./config/theme";
+import { ColorModeContext, useMode } from "./app/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import AppRoutes from "./routes/AppRoutes";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -11,7 +10,9 @@ function App() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppRoutes/>
+        <AppRoutes />
+
+        <Toaster position="top-right" />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
