@@ -1,8 +1,14 @@
 import { Sidebar as ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { useState } from "react";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Box,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-import { tokens } from "../../../config/theme";
+import { tokens } from "../../../app/theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -22,11 +28,6 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  
-
-
-
-
   return (
     <MenuItem
       active={selected === title}
@@ -37,12 +38,15 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       icon={icon}
     >
       <Typography>
-        <Link 
-         style={{
-            color: 'inherit',
-            textDecoration:'none',
+        <Link
+          style={{
+            color: "inherit",
+            textDecoration: "none",
           }}
-        to={to}>{title}</Link>
+          to={to}
+        >
+          {title}
+        </Link>
       </Typography>
     </MenuItem>
   );
@@ -54,12 +58,19 @@ const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
 
+  const isNonMobile = useMediaQuery("(min-width:700px)");
+
+  useEffect(() => {
+    if (isNonMobile) {
+      setIsCollapsed(false);
+    } else {
+      setIsCollapsed(true);
+    }
+  }, [isNonMobile]);
+
   return (
     <Box>
-      <ProSidebar
-        collapsed={isCollapsed}
-        backgroundColor= {colors.primary[400]}
-      >
+      <ProSidebar collapsed={isCollapsed} backgroundColor={colors.primary[400]}>
         <Menu
           iconShape="square"
           menuItemStyles={{

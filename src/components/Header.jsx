@@ -1,5 +1,5 @@
 import { Typography, Box, useTheme } from "@mui/material";
-import { tokens } from "../config/theme";
+import { tokens } from "../app/theme";
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ title, subtitle }) => {

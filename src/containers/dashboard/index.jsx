@@ -1,6 +1,6 @@
 import { Box, Button, Typography, useTheme } from "@mui/material";
 import Header from "../../components/Header";
-import { tokens } from "../../config/theme";
+import { tokens } from "../../app/theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 
